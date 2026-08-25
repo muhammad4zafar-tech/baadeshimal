@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بادِ شمال کینیڈا — Baad-e-Shimal Canada</title>
+
+    <!-- Urdu Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Noto Nastaliq Urdu', serif;
+            background: #f7f7f7;
+            direction: rtl;
+            text-align: right;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 30px;
+            color: #002b5c;
+            margin-top: 0;
+        }
+
+        h3 {
+            font-size: 26px;
+            color: #002b5c;
+            margin-top: 0;
+        }
+
+        p {
+            font-size: 22px;
+            line-height: 2.2;
+        }
+
+        /* English text block */
+        .english-text {
+            direction: ltr;
+            text-align: left;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .latest-articles {
+            margin-top: 40px;
+        }
+
+        .article-box {
+            background: #fafafa;
+            padding: 20px;
+            border-right: 5px solid #c9a44a;
+            margin-bottom: 20px;
+            border-radius: 6px;
+        }
+
+        .article-box h3 {
+            margin: 0;
+            font-size: 24px;
+            color: #b00000;
+        }
+
+        .article-box p {
+            margin: 8px 0 0 0;
+            font-size: 20px;
+        }
+
+        /* Back to top button */
+        #backToTop {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background: #b00000;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: none;
+            font-size: 16px;
+        }
+
+        #backToTop:hover {
+            background: #d60000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Include -->
+    <div id="header"></div>
+
+    <script>
+        fetch("header.html")
+            .then(res => res.text())
+            .then(data => document.getElementById("header").innerHTML = data);
+    </script>
+
+    <!-- Main Content -->
+    <div class="content">
+
+        <h2>بادِ شمال کینیڈا میں خوش آمدید</h2>
+        <h3>Baad-e-Shimal Canada</h3>
+
+        <!-- Urdu Introduction (Primary) -->
+        <p>
+            بادِ شمال کینیڈا ایک ادبی و تحقیقی جریدہ ہے جو مکمل طور پر اردو زبان میں شائع ہوتا ہے۔
+            ہمارا مقصد اردو ادب، تحقیق، تنقید، اور ثقافتی مطالعات کو جدید ڈیجیٹل پلیٹ فارم کے ذریعے فروغ دینا ہے۔
+            ہم دنیا بھر کے لکھاریوں کے مضامین، تحقیقاتی مقالات، تخلیقی تحریریں اور ادبی کام شائع کرتے ہیں۔
+        </p>
+
+        <!-- English Introduction (Secondary) -->
+        <div class="english-text">
+            Baad-e-Shimal Canada is an Urdu-first literary and academic journal based in Canada.
+            English is used only for navigation and accessibility.
+        </div>
+
+        <div class="latest-articles">
+            <h2>تازہ ترین مضامین</h2>
+
+            <div class="article-box">
+                <h3>نمونہ مضمون — Sample Article Title</h3>
+                <p>یہ صرف ایک نمونہ ہے۔ اصل مضامین یہاں شامل کیے جائیں گے۔</p>
+            </div>
+
+            <div class="article-box">
+                <h3>نمونہ تحقیق — Sample Research Title</h3>
+                <p>یہ بھی ایک نمونہ ہے۔ آپ اسے اصل مواد سے تبدیل کر سکتے ہیں۔</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <div id="backToTop">⬆ اوپر جائیں</div>
+
+    <script>
+        const btn = document.getElementById("backToTop");
+
+        window.addEventListener("scroll", () => {
+            btn.style.display = window.scrollY > 300 ? "block" : "none";
+        });
+
+        btn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    </script>
+
+    <!-- Footer Include -->
+    <div id="footer"></div>
+
+    <script>
+        fetch("footer.html")
+            .then(res => res.text())
+            .then(data => document.getElementById("footer").innerHTML = data);
+    </script>
+
+</body>
+</html>
