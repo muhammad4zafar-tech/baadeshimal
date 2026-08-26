@@ -2,178 +2,46 @@
 <html lang="ur" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مضامین — Articles | بادِ شمال کینیڈا</title>
-
-    <!-- Urdu Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
-
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Noto Nastaliq Urdu', serif;
-            background: #f7f7f7;
-            direction: rtl;
-            text-align: right;
-        }
-
-        .content {
-            max-width: 900px;
-            margin: 40px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-
-        h1 {
-            font-size: 32px;
-            color: #002b5c;
-            margin-top: 0;
-        }
-
-        p {
-            font-size: 22px;
-            line-height: 2.2;
-        }
-
-        /* Article list */
-        .article-list {
-            margin-top: 30px;
-        }
-
-        .article-item {
-            background: #fafafa;
-            padding: 20px;
-            border-right: 5px solid #c9a44a;
-            margin-bottom: 20px;
-            border-radius: 6px;
-        }
-
-        .article-item h2 {
-            margin: 0;
-            font-size: 26px;
-            color: #b00000;
-        }
-
-        .article-item p {
-            margin: 10px 0 0 0;
-            font-size: 20px;
-        }
-
-        .read-more {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 8px 16px;
-            background: #b00000;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 18px;
-        }
-
-        .read-more:hover {
-            background: #d60000;
-        }
-
-        /* Back to top button */
-        #backToTop {
-            position: fixed;
-            bottom: 25px;
-            left: 25px;
-            background: #b00000;
-            color: white;
-            padding: 12px 18px;
-            border-radius: 6px;
-            cursor: pointer;
-            display: none;
-            font-size: 16px;
-        }
-
-        #backToTop:hover {
-            background: #d60000;
-        }
-    </style>
+    <title>Articles – مضامین</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/main.js"></script>
 </head>
 
 <body>
 
-    <!-- Header Include -->
     <div id="header"></div>
-
     <script>
         fetch("header.html")
-            .then(res => res.text())
-            .then(data => document.getElementById("header").innerHTML = data);
+            .then(r => r.text())
+            .then(h => document.getElementById("header").innerHTML = h);
     </script>
 
-    <!-- Main Content -->
-    <div class="content">
+    <div class="container">
 
-        <h1>مضامین</h1>
-        <p>
-            یہاں بادِ شمال کینیڈا کے تمام مضامین، تحقیقی مقالات، تنقیدی تحریریں اور ادبی تخلیقات شامل کی جائیں گی۔
-            ہر مضمون اپنے متعلقہ صفحے پر مکمل تفصیل کے ساتھ دستیاب ہوگا۔
-        </p>
+        <div class="sidebar">
+            <h3>مضامین</h3>
 
-        <div class="article-list">
+            <input type="text" id="search" placeholder="مضمون تلاش کریں…" onkeyup="filterArticles()">
 
-            <!-- Sample Article 1 -->
-            <div class="article-item">
-                <h2>نمونہ مضمون — Sample Article Title</h2>
-                <p>
-                    یہ ایک نمونہ خلاصہ ہے۔ اصل مضمون یہاں شامل کیا جائے گا۔  
-                    آپ ہر مضمون کے لیے الگ HTML صفحہ بنا سکتے ہیں۔
-                </p>
-                <a href="#" class="read-more">مزید پڑھیں</a>
-            </div>
+            <ul>
+                <li onclick="loadArticle('article-01')">ہستی باری تعالیٰ</li>
+                <li onclick="loadArticle('article-02')">رسول اللہ ﷺ کا جذبہ ایثار و قربانی</li>
+                <li onclick="loadArticle('article-03')">سیرتِ نبوی ﷺ — رحمۃ للعالمین</li>
+            </ul>
+        </div>
 
-            <!-- Sample Article 2 -->
-            <div class="article-item">
-                <h2>نمونہ تحقیق — Sample Research Title</h2>
-                <p>
-                    یہ ایک تحقیقی مضمون کا نمونہ خلاصہ ہے۔  
-                    اصل تحقیقاتی مواد یہاں شامل کیا جائے گا۔
-                </p>
-                <a href="#" class="read-more">مزید پڑھیں</a>
-            </div>
-
-            <!-- Sample Article 3 -->
-            <div class="article-item">
-                <h2>نمونہ تنقید — Sample Criticism Title</h2>
-                <p>
-                    یہ تنقیدی تحریر کا نمونہ خلاصہ ہے۔  
-                    اصل تحریر یہاں شامل کی جائے گی۔
-                </p>
-                <a href="#" class="read-more">مزید پڑھیں</a>
-            </div>
-
+        <div class="viewer" id="articleContent">
+            <h2>مضمون منتخب کریں</h2>
+            <p>براہِ کرم دائیں جانب سے کوئی مضمون منتخب کریں۔</p>
         </div>
 
     </div>
 
-    <!-- Back to Top Button -->
-    <div id="backToTop">⬆ اوپر جائیں</div>
-
-    <script>
-        const btn = document.getElementById("backToTop");
-
-        window.addEventListener("scroll", () => {
-            btn.style.display = window.scrollY > 300 ? "block" : "none";
-        });
-
-        btn.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-    </script>
-
-    <!-- Footer Include -->
     <div id="footer"></div>
-
     <script>
         fetch("footer.html")
-            .then(res => res.text())
-            .then(data => document.getElementById("footer").innerHTML = data);
+            .then(r => r.text())
+            .then(f => document.getElementById("footer").innerHTML = f);
     </script>
 
 </body>

@@ -1,126 +1,18 @@
-<style>
-    /* Header container */
-    .main-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 15px 30px;
-        background: linear-gradient(to left, #d60000, #b00000);
-        border-bottom: 5px solid #c9a44a;
-        flex-wrap: wrap;
-    }
-
-    /* Logo */
-    .main-header img {
-        width: 80px;
-        height: auto;
-        margin-left: 15px;
-    }
-
-    /* Titles */
-    .site-title h1 {
-        margin: 0;
-        font-family: 'Jameel Noori Nastaleeq';
-        font-size: 32px;
-        color: white;
-    }
-
-    .site-title h3 {
-        margin: 0;
-        font-size: 18px;
-        color: #ffeec2;
-    }
-
-    /* Navigation */
-    nav.main-nav {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        flex-wrap: wrap;
-    }
-
-    nav.main-nav a {
-        color: #ffeec2;
-        text-decoration: none;
-        font-size: 18px;
-        padding: 8px 14px;
-        border-radius: 6px;
-        transition: background 0.3s, color 0.3s;
-        white-space: nowrap;
-    }
-
-    nav.main-nav a:hover {
-        background: #ffd27f;
-        color: #b00000;
-    }
-
-    nav.main-nav a.active {
-        background: #ffd27f;
-        color: #b00000;
-        font-weight: bold;
-    }
-
-    /* Social links */
-    .social-links {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-right: 10px;
-        flex-wrap: wrap;
-    }
-
-    .social-links a {
-        color: #ffeec2;
-        text-decoration: none;
-        font-size: 16px;
-        padding: 4px 8px;
-        border-radius: 4px;
-        border: 1px solid #ffeec2;
-        transition: background 0.3s, color 0.3s;
-        white-space: nowrap;
-    }
-
-    .social-links a:hover {
-        background: #ffd27f;
-        color: #b00000;
-    }
-
-    /* Responsive collapse */
-    @media (max-width: 700px) {
-        .main-header {
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        nav.main-nav {
-            flex-direction: column;
-            align-items: flex-start;
-            margin-top: 10px;
-        }
-
-        .social-links {
-            margin-top: 10px;
-        }
-    }
-</style>
-
 <header class="main-header">
 
-    <!-- Logo + Titles -->
-    <div style="display:flex; align-items:center;">
-        <img src="images/baadeshimal_logo_26.png" alt="Baad-e-Shimal Canada Logo">
+    <div class="header-left">
+        <img src="assets/images/baadeshimal_logo_26.png" alt="Baad-e-Shimal Canada Logo">
 
-        <div class="site-title" style="color:white; margin-right:20px;">
+        <div class="site-title">
             <h1>بادِ شمال کینیڈا</h1>
             <h3>Baad-e-Shimal Canada</h3>
         </div>
     </div>
 
-    <!-- Navigation + Social -->
-    <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+    <div class="header-right">
 
         <nav class="main-nav">
-            <a href="index.html" class="active">Articles – مضامین</a>
+            <a href="index.html">Articles – مضامین</a>
             <a href="categories.html">Categories – زمرے</a>
             <a href="about.html">About – تعارف</a>
             <a href="contact.html">Contact – رابطہ</a>

@@ -2,167 +2,34 @@
 <html lang="ur" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>Contact — Baad-e-Shimal Canada</title>
-
-    <style>
-        body {
-            background: linear-gradient(to bottom, #e8f4ff, #cfe7ff);
-            margin: 0;
-            padding: 0;
-            font-family: serif;
-        }
-
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 30px;
-            background: linear-gradient(to left, #d60000, #b00000);
-            border-bottom: 5px solid #c9a44a;
-        }
-
-        header img {
-            width: 80px;
-            height: auto;
-            margin-left: 15px;
-        }
-
-        header h1 {
-            margin: 0;
-            font-family: 'Jameel Noori Nastaleeq', serif;
-            font-size: 32px;
-            color: white;
-        }
-
-        header h3 {
-            margin: 0;
-            font-size: 18px;
-            color: #ffeec2;
-        }
-
-        nav a {
-            color: #ffeec2;
-            margin: 0 15px;
-            text-decoration: none;
-            font-size: 20px;
-        }
-
-        nav a:hover {
-            color: #ffd27f;
-        }
-
-        .contact {
-            padding: 40px;
-            line-height: 2.4;
-            font-size: 20px;
-        }
-
-        footer {
-            background: #002b5c;
-            color: white;
-            text-align: center;
-            padding: 25px;
-            border-top: 5px solid #c9a44a;
-            margin-top: 50px;
-        }
-
-        footer h3 {
-            margin: 0;
-            font-family: 'Jameel Noori Nastaleeq', serif;
-            font-size: 26px;
-        }
-
-        footer p {
-            margin: 8px 0;
-            font-size: 16px;
-        }
-
-        footer a {
-            color: #ffd27f;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        footer .motto {
-            margin-top: 15px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #ffd27f;
-        }<header style="
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:15px 30px;
-    background:linear-gradient(to left, #d60000, #b00000);
-    border-bottom:5px solid #c9a44a;
-">
-    <div style="display:flex; align-items:center;">
-        <img src="images/baadeshimal_logo_26.png" 
-             alt="Baad-e-Shimal Canada Logo"
-             style="width:80px; height:auto; margin-left:15px;">
-        <div style="color:white; margin-right:20px;">
-            <h1 style="margin:0; font-family:'Jameel Noori Nastaleeq'; font-size:32px;">
-                بادِ شمال کینیڈا
-            </h1>
-            <h3 style="margin:0; font-size:18px; color:#ffeec2;">
-                Baad-e-Shimal Canada
-            </h3>
-        </div>
-    </div>
-
-    <nav>
-        <a href="index.html" style="color:#ffeec2; margin:0 15px; text-decoration:none; font-size:20px;">صفحۂ اول</a>
-        <a href="articles.html" style="color:#ffeec2; margin:0 15px; text-decoration:none; font-size:20px;">مضامین</a>
-        <a href="about.html" style="color:#ffeec2; margin:0 15px; text-decoration:none; font-size:20px;">تعارف</a>
-        <a href="contact.html" style="color:#ffeec2; margin:0 15px; text-decoration:none; font-size:20px;">رابطہ</a>
-    </nav>
-</header>
-
-    </style>
+    <title>Contact – رابطہ</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
 
-<header>
-    <div style="display:flex; align-items:center;">
-        <img src="images/baadeshimal_logo_26.png" alt="Logo">
-        <div style="color:white; margin-right:20px;">
-            <h1>بادِ شمال کینیڈا</h1>
-            <h3>Baad-e-Shimal Canada</h3>
-        </div>
+    <div id="header"></div>
+    <script>
+        fetch("header.html")
+            .then(r => r.text())
+            .then(h => document.getElementById("header").innerHTML = h);
+    </script>
+
+    <div class="content">
+        <h2>رابطہ</h2>
+        <p>آپ ہم سے درج ذیل ذرائع سے رابطہ کر سکتے ہیں:</p>
+        <ul>
+            <li>Email: msultanzafar@gmail.com</li>
+            <li>Instagram: @m.sultan.zafar</li>
+        </ul>
     </div>
 
-    <nav>
-        <a href="index.html">صفحۂ اوّل</a>
-        <a href="articles.html">مضامین</a>
-        <a href="about.html">تعارف</a>
-        <a href="contact.html">رابطہ</a>
-    </nav>
-</header>
-
-<section class="contact">
-    <p>
-        آپ ہم سے رابطہ کرنے کے لیے درج ذیل ای میل استعمال کر سکتے ہیں:
-        <br><br>
-        <strong>Email:</strong>
-        <a href="mailto:baadeshimal.ca@gmail.com">baadeshimal.ca@gmail.com</a>
-    </p>
-
-    <p dir="ltr">
-        For inquiries, suggestions, or collaboration, feel free to reach out using the email above.
-    </p>
-</section>
-
-<footer>
-    <h3>بادِ شمال کینیڈا</h3>
-    <p>Baad-e-Shimal Canada</p>
-    <p>© 2026 — M. Sultan Zafar</p>
-    <p>Email: <a href="mailto:baadeshimal.ca@gmail.com">baadeshimal.ca@gmail.com</a></p>
-    <p class="motto">We The North — True North</p>
-</footer>
+    <div id="footer"></div>
+    <script>
+        fetch("footer.html")
+            .then(r => r.text())
+            .then(f => document.getElementById("footer").innerHTML = f);
+    </script>
 
 </body>
 </html>
