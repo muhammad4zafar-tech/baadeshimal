@@ -325,4 +325,30 @@ body {
         max-width: 100% !important;
     }
 }
+/* Fix left-side overflow on Mazameen page */
+@media (max-width: 768px) {
+
+    .container {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    .viewer,
+    .sidebar {
+        margin: 0 !important;
+        padding: 10px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    #pdfViewer {
+        width: 100% !important;
+        max-width: 100% !important;
+        display: block;
+    }
+}
 
