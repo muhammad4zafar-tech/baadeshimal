@@ -132,7 +132,7 @@ body {
     display: flex;
     flex-direction: row;
     width: 95%;
-   @media (max-width: 768px) {
+   @media (max-width: 700px) {
     .container {
         max-width: 100% !important;
     }
