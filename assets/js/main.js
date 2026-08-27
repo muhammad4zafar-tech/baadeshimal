@@ -1,23 +1,17 @@
+/* ----------------------------------------------------
+   OPEN PDF IN NEW FULL-SCREEN WINDOW
+---------------------------------------------------- */
 function loadPDF(pdfFile) {
+    // Open PDF in a new tab/window (best for mobile)
+    window.open(`articles/${pdfFile}`, "_blank");
 
-    console.log("Loading:", pdfFile);
-
-    const viewer = document.getElementById("pdfViewer");
-    const intro = document.querySelector(".article-intro");
-
-    // Hide intro text when an article is selected
-    if (intro) {
-        intro.style.display = "none";
-    }
-
-    viewer.src = `articles/${pdfFile}`;
-
+    // Highlight the active article in the sidebar
     highlightActive(pdfFile);
-
-    viewer.scrollIntoView({ behavior: "smooth" });
-
 }
 
+/* ----------------------------------------------------
+   HIGHLIGHT ACTIVE ARTICLE
+---------------------------------------------------- */
 function highlightActive(pdfFile) {
     const items = document.querySelectorAll(".sidebar li");
 
@@ -29,6 +23,10 @@ function highlightActive(pdfFile) {
         }
     });
 }
+
+/* ----------------------------------------------------
+   SEARCH / FILTER ARTICLES
+---------------------------------------------------- */
 function filterArticles() {
     const input = document.getElementById("search").value.toLowerCase();
     const items = document.querySelectorAll(".sidebar li");
