@@ -5,7 +5,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Prevent page overflow on mobile */
+    overflow-x: hidden; /* Prevent ANY horizontal overflow */
 }
 
 /* ----------------------------------------------------
@@ -17,8 +17,6 @@ html {
 }
 
 body {
-    margin: 0;
-    padding: 0;
     background: #f3f0e8;
     color: #222;
 }
@@ -126,20 +124,16 @@ body {
 }
 
 /* ----------------------------------------------------
-   ARTICLES PAGE
+   ARTICLES PAGE (Mazameen)
 ---------------------------------------------------- */
 .container {
     display: flex;
     flex-direction: row;
-    width: 90%;
-   @media (max-width: 768px) {
-    .container {
-        max-width: 100% !important;
-    }
-}
-
+    width: 100%;
+    max-width: 1300px;
     margin: 30px auto;
     gap: 20px;
+    box-sizing: border-box;
 }
 
 .viewer {
@@ -149,6 +143,7 @@ body {
     padding: 10px;
     box-shadow: 0 0 12px rgba(0,0,0,0.15);
     border-radius: 4px;
+    box-sizing: border-box;
 }
 
 .sidebar {
@@ -156,6 +151,7 @@ body {
     background: #fff;
     border: 1px solid #ddd;
     padding: 20px;
+    box-sizing: border-box;
 }
 
 .sidebar h3 {
@@ -229,11 +225,11 @@ body {
 }
 
 /* ----------------------------------------------------
-   MOBILE RESPONSIVE (FINAL)
+   MOBILE RESPONSIVE (FINAL FIXED VERSION)
 ---------------------------------------------------- */
 @media (max-width: 768px) {
 
-    /* Fix header overflow */
+    /* Header */
     .header-container {
         flex-direction: column;
         align-items: center;
@@ -241,7 +237,6 @@ body {
         padding: 0 10px;
     }
 
-    /* Social buttons */
     .header-left {
         flex-wrap: wrap;
         justify-content: center;
@@ -254,13 +249,11 @@ body {
         font-size: 12px;
     }
 
-    /* Logo */
     .logo {
         max-width: 150px;
         width: 100%;
     }
 
-    /* Title */
     .site-title h1 {
         font-size: 28px;
         text-align: center;
@@ -272,76 +265,27 @@ body {
     }
 
     /* Navigation */
-    .main-nav {
-        margin-top: 10px;
-    }
-
     .main-nav a {
         font-size: 18px;
         margin: 0 10px;
     }
 
-    /* Fix container overflow */
+    /* Mazameen page — FULL FIX */
     .container {
-        flex-direction: column-reverse;
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-        padding: 0 10px;
-    }
-
-    .sidebar {
-        width: 100%;
-        border-bottom: 2px solid #b00000;
-        padding-bottom: 10px;
-    }
-
-    .viewer {
-        width: 100%;
-        margin-top: 20px;
-    }
-}
-/* Fix Mazameen page overflow */
-@media (max-width: 768px) {
-
-    .container {
-        display: block;
-        width: 100%;
-        max-width: 100%;
-        padding: 0;
-        margin: 0;
-    }
-
-    .viewer,
-    .sidebar {
-        width: 100%;
-        max-width: 100%;
-        padding: 10px;
-        box-sizing: border-box;
-    }
-
-    #pdfViewer {
+        display: block !important;
         width: 100% !important;
         max-width: 100% !important;
-    }
-}
-/* Fix left-side overflow on Mazameen page */
-@media (max-width: 768px) {
-
-    .container {
         margin: 0 !important;
         padding: 0 !important;
-        width: 100% !important;
-        max-width: 100% !important;
         overflow-x: hidden !important;
     }
 
     .viewer,
     .sidebar {
-        margin: 0 !important;
-        padding: 10px !important;
         width: 100% !important;
         max-width: 100% !important;
+        margin: 0 !important;
+        padding: 10px !important;
         box-sizing: border-box;
     }
 
@@ -351,4 +295,3 @@ body {
         display: block;
     }
 }
-
