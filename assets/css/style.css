@@ -5,6 +5,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    overflow-x: hidden; /* Prevent page overflow on mobile */
 }
 
 /* ----------------------------------------------------
@@ -223,16 +224,16 @@ body {
 }
 
 /* ----------------------------------------------------
-   MOBILE RESPONSIVE (FINAL & CLEAN)
+   MOBILE RESPONSIVE (FINAL)
 ---------------------------------------------------- */
 @media (max-width: 768px) {
 
-    /* Header layout */
+    /* Fix header overflow */
     .header-container {
         flex-direction: column;
         align-items: center;
         gap: 15px;
-        padding: 10px 0;
+        padding: 0 10px;
     }
 
     /* Social buttons */
@@ -250,8 +251,8 @@ body {
 
     /* Logo */
     .logo {
-        max-width: 180px;
-        width: 60%;
+        max-width: 150px;
+        width: 100%;
     }
 
     /* Title */
@@ -275,9 +276,13 @@ body {
         margin: 0 10px;
     }
 
-    /* Articles page */
+    /* Fix container overflow */
     .container {
         flex-direction: column-reverse;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0 10px;
     }
 
     .sidebar {
