@@ -9,6 +9,9 @@
 
 <body>
 
+<div class="page-wrapper">
+
+    <!-- HEADER -->
     <div id="header"></div>
     <script>
         fetch("header.html")
@@ -16,33 +19,61 @@
             .then(h => document.getElementById("header").innerHTML = h);
     </script>
 
+    <!-- MAIN CONTENT -->
     <div class="container">
 
+        <!-- RIGHT SIDE: Article List -->
         <div class="sidebar">
             <h3>مضامین</h3>
 
             <input type="text" id="search" placeholder="مضمون تلاش کریں…" onkeyup="filterArticles()">
 
             <ul>
-                <li onclick="loadArticle('article-01')">ہستی باری تعالیٰ</li>
-                <li onclick="loadArticle('article-02')">رسول اللہ ﷺ کا جذبہ ایثار و قربانی</li>
-                <li onclick="loadArticle('article-03')">سیرتِ نبوی ﷺ — رحمۃ للعالمین</li>
+                <li onclick="loadPDF('article-001-hastibarritalah.pdf')">ہستی باری تعالیٰ</li>
+                <li onclick="loadPDF('article-002-muhammadpbuh-essaroqurbani.pdf')">رسول اللہ ﷺ کا جذبہ ایثار و قربانی</li>
+                <li onclick="loadPDF('article-003-muhammadpbuh-muzzaki.pdf')">آنحضرت ﷺ بحیثیت مزّکی</li>
             </ul>
         </div>
 
-        <div class="viewer" id="articleContent">
-            <h2>مضمون منتخب کریں</h2>
-            <p>براہِ کرم دائیں جانب سے کوئی مضمون منتخب کریں۔</p>
+        <!-- LEFT SIDE: PDF Viewer -->
+        <div class="viewer">
+
+            <div class="article-intro">
+                <h2>مضامین — فکری و ادبی جہتوں کا انتخاب</h2>
+                <p>
+                    بادِ شمال کینیڈا اپنے قارئین کے لیے ایسے مضامین پیش کرتا ہے جو 
+                    فکری بصیرت، علمی تحقیق، اور ادبی جمالیات کا حسین امتزاج ہوں۔
+                </p>
+                <p>
+                    دائیں جانب موجود فہرست میں سے کوئی بھی مضمون منتخب کریں۔ 
+                    منتخب کردہ تحریر بائیں جانب اسی صفحے پر کھل جائے گی۔
+                </p>
+
+                <hr>
+
+                <h3>Articles — Thoughtful, Insightful & Carefully Curated</h3>
+                <p>
+                    Baad‑e‑Shimal Canada brings you a selection of articles that blend 
+                    scholarship, reflection, and literary elegance. Choose any article 
+                    from the list on the right — it will open here for easy reading.
+                </p>
+            </div>
+
+            <iframe id="pdfViewer" src="" frameborder="0" style="width:100%; height:600px;"></iframe>
+
         </div>
 
-    </div>
+    </div><!-- END container -->
 
-    <div id="footer"></div>
-    <script>
-        fetch("footer.html")
-            .then(r => r.text())
-            .then(f => document.getElementById("footer").innerHTML = f);
-    </script>
+</div><!-- END page-wrapper -->
+
+<!-- FOOTER -->
+<div id="footer"></div>
+<script>
+    fetch("footer.html")
+        .then(r => r.text())
+        .then(f => document.getElementById("footer").innerHTML = f);
+</script>
 
 </body>
 </html>

@@ -2,43 +2,50 @@
 <html lang="ur" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>Baad-e-Shimal Canada</title>
+    <title>بادِ شمال کینیڈا – Home</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/main.js"></script>
 </head>
 
 <body>
 
-    <div id="header"></div>
-    <script>
-        fetch("header.html")
-            .then(r => r.text())
-            .then(h => document.getElementById("header").innerHTML = h);
-    </script>
+<div id="header"></div>
+<script>
+    fetch("header.html")
+        .then(r => r.text())
+        .then(h => document.getElementById("header").innerHTML = h);
+</script>
 
-    <div class="content">
-        <h2>تازہ ترین مضامین</h2>
+<div class="content">
 
-        <div class="latest-articles">
+    <h2 style="color:#b00000; text-align:center;">خوش آمدید — بادِ شمال کینیڈا</h2>
 
-            <div class="article-box">
-                <h3>ہستی باری تعالیٰ</h3>
-                <p><a href="articles.html">مزید پڑھیں →</a></p>
-            </div>
+    <p style="font-size:20px; line-height:1.8; text-align:center;">
+        بادِ شمال کینیڈا ایک علمی و ادبی پلیٹ فارم ہے جو  
+        تحقیق، فکر، اور خوبصورت اردو اظہار کو فروغ دینے کے لیے قائم کیا گیا ہے۔  
+        یہاں آپ دین، تاریخ، معاشرت، اخلاقیات اور عصری موضوعات پر  
+        منتخب اور معیاری تحریریں پڑھ سکتے ہیں۔
+    </p>
 
-            <div class="article-box">
-                <h3>سیرت آنحضرت محمد ﷺ</h3>
-                <p><a href="articles.html">مزید پڑھیں →</a></p>
-            </div>
+    <hr style="margin:30px auto; width:60%;">
 
-        </div>
-    </div>
+    <h3 style="text-align:center; color:#444;">Welcome to Baad‑e‑Shimal Canada</h3>
 
-    <div id="footer"></div>
-    <script>
-        fetch("footer.html")
-            .then(r => r.text())
-            .then(f => document.getElementById("footer").innerHTML = f);
-    </script>
+    <p style="font-size:18px; line-height:1.8; text-align:center;">
+        Baad‑e‑Shimal Canada is a bilingual literary and scholarly platform  
+        dedicated to thoughtful writing, cultural reflection, and  
+        high‑quality Urdu research.  
+        Explore our articles, learn, reflect, and enjoy the beauty of Urdu literature.
+    </p>
+
+</div>
+
+<div id="footer"></div>
+<script>
+    fetch("footer.html")
+        .then(r => r.text())
+        .then(f => document.getElementById("footer").innerHTML = f);
+</script>
 
 </body>
 </html>
