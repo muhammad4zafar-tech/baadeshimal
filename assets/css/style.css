@@ -296,3 +296,28 @@ body {
         margin-top: 20px;
     }
 }
+/* Fix Mazameen page overflow */
+@media (max-width: 768px) {
+
+    .container {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .viewer,
+    .sidebar {
+        width: 100%;
+        max-width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    #pdfViewer {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
