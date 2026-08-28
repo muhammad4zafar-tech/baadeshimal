@@ -1,12 +1,37 @@
 /* ----------------------------------------------------
-   OPEN PDF IN NEW FULL-SCREEN WINDOW
+   HYBRID PDF LOADING
+   - Mobile: open PDF in new full-screen tab
+   - Desktop: load PDF inside viewer
 ---------------------------------------------------- */
 function loadPDF(pdfFile) {
-    // Open PDF in a new tab/window (best for mobile)
-    window.open(`articles/${pdfFile}`, "_blank");
 
-    // Highlight the active article in the sidebar
+    // Detect mobile screen width
+    if (window.innerWidth <= 768) {
+        // Mobile → open full screen
+        window.open(`articles/${pdfFile}`, "_blank");
+
+        // Highlight active article
+        highlightActive(pdfFile);
+        return;
+    }
+
+    // Desktop → load inside viewer
+    const viewer = document.getElementById("pdfViewer");
+    const intro = document.querySelector(".article-intro");
+
+    // Hide intro text
+    if (intro) {
+        intro.style.display = "none";
+    }
+
+    // Load PDF inside iframe viewer
+    viewer.src = `articles/${pdfFile}#toolbar=0&zoom=page-width`;
+
+    // Highlight active article
     highlightActive(pdfFile);
+
+    // Scroll to viewer
+    viewer.scrollIntoView({ behavior: "smooth" });
 }
 
 /* ----------------------------------------------------
