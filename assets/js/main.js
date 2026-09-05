@@ -38,7 +38,7 @@ function loadPDF(pdfFile) {
    HIGHLIGHT ACTIVE ARTICLE
 ---------------------------------------------------- */
 function highlightActive(pdfFile) {
-    const items = document.querySelectorAll(".sidebar li");
+    const items = document.querySelectorAll(".article-link");
 
     items.forEach(item => {
         item.classList.remove("active-article");
@@ -54,10 +54,41 @@ function highlightActive(pdfFile) {
 ---------------------------------------------------- */
 function filterArticles() {
     const input = document.getElementById("search").value.toLowerCase();
-    const items = document.querySelectorAll(".sidebar li");
+    const items = document.querySelectorAll(".article-link");
 
     items.forEach(item => {
         const text = item.textContent.toLowerCase();
         item.style.display = text.includes(input) ? "block" : "none";
     });
+}
+
+/* ----------------------------------------------------
+   SHARE ARTICLE
+---------------------------------------------------- */
+function shareArticle() {
+    // Find the active article
+    const active = document.querySelector(".active-article");
+    if (!active) {
+        alert("Please open an article first.");
+        return;
+    }
+
+    // Extract PDF filename from onclick attribute
+    const pdfFile = active.getAttribute("onclick").match(/'(.*?)'/)[1];
+
+    // Build full link
+    const link = `https://www.baadeshimal.ca/articles/${pdfFile}`;
+
+    // Mobile share API
+    if (navigator.share) {
+        navigator.share({
+            title: "Baad-e-Shimal Article",
+            text: "Check out this article:",
+            url: link
+        });
+    } else {
+        // Desktop fallback
+        navigator.clipboard.writeText(link);
+        alert("Article link copied!");
+    }
 }
