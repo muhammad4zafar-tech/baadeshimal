@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Articles – مضامین</title>
+
+    <!-- Styles -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Main JS (PDF viewer, share, highlight, search) -->
     <script src="assets/js/main.js"></script>
 </head>
 
@@ -12,13 +17,8 @@
 
 <div class="page-wrapper">
 
-    <!-- HEADER -->
+    <!-- Auto-loaded header -->
     <div id="header"></div>
-    <script>
-        fetch("header.html")
-            .then(r => r.text())
-            .then(h => document.getElementById("header").innerHTML = h);
-    </script>
 
     <!-- MAIN CONTENT -->
     <div class="container">
@@ -30,16 +30,47 @@
             <input type="text" id="search" placeholder="مضمون تلاش کریں…" onkeyup="filterArticles()">
 
             <ul>
-                <li onclick="loadPDF('article-001-hastibarritalah.pdf')">ہستی باری تعالیٰ</li>
-                <li onclick="loadPDF('article-002-muhammadpbuh-essaroqurbani.pdf')">رسول اللہ ﷺ کا جذبہ ایثار و قربانی</li>
-                <li onclick="loadPDF('article-003-muhammadpbuh-muzzaki.pdf')">آنحضرت ﷺ بحیثیت مزّکی</li>
-                <li onclick="loadPDF('article-004-MuhammadPBUH-qabooletDua.pdf')">قبولیتِ دُعا رسول اللہ ﷺ</li>
-                <li onclick="loadPDF('article-005-MasihASSultanulQalam.pdf')">حضرت مسیح موعودعلیہ السلام بطور سلطان القلم </li>
-                <li onclick="loadPDF('article-006-khulfa.pdf')">خلفائے کرام کی اطاعت و ادب کی قابلِ تقلید مثالیں</li>
-                <li onclick="loadPDF('article-007-NizameKhilafat.pdf')">نِظامِ خلافت کی اہمیت اور ضرورت</li>
-                <li onclick="loadPDF('article-008-ItaatNizameJamaat.pdf')">اطاعت ِ نظامِ جماعت اور ہماری ذمہ داریاں</li>
-                <li onclick="loadPDF('article-009-IslamAurMaghrib.pdf')">اسلام اور مغرب: چند غلط فہمیوں کی تصیح </li>
-                <li onclick="loadPDF('article-010-Islam4Marriages.pdf')">اسلام میں چار شادیوں کی اجازت پر اعتراض کا جواب </li>
+
+                <li class="article-link" onclick="loadPDF('article-001-hastibarritalah.pdf')">
+                    ہستی باری تعالیٰ
+                </li>
+
+                <li class="article-link" onclick="loadPDF('article-002-muhammadpbuh-essaroqurbani.pdf')">
+                    رسول اللہ ﷺ کا جذبہ ایثار و قربانی
+                </li>
+
+                <li class="article-link" onclick="loadPDF('article-003-muhammadpbuh-muzzaki.pdf')">
+                    آنحضرت ﷺ بحیثیت مزّکی
+                </li>
+
+                <li class="article-link" onclick="loadPDF('article-004-MuhammadPBUH-qabooletDua.pdf')">
+                    قبولیتِ دُعا رسول اللہ ﷺ
+                </li>
+
+                <li class="article-link" onclick="loadPDF('article-005-MasihASSultanulQalam.pdf')">
+                    حضرت مسیح موعود علیہ السلام بطور سلطان القلم
+                </li>
+
+                <li class="article-link" onclick="loadPDF('article-006-khulfa.pdf')">
+                    خلفائے کرام کی اطاعت و ادب کی قابلِ تقلید مثالیں
+                </li>
+
+                <li class="article-link" onclick="loadPDF('article-007-NizameKhilafat.pdf')">
+                    نِظامِ خلافت کی اہمیت اور ضرورت
+                </li>
+
+                <li class="article-link" onclick="loadPDF('article-008-ItaatNizameJamaat.pdf')">
+                    اطاعتِ نظامِ جماعت اور ہماری ذمہ داریاں
+                </li>
+
+                <li class="article-link" onclick="loadPDF('article-009-IslamAurMaghrib.pdf')">
+                    اسلام اور مغرب: چند غلط فہمیوں کی تصحیح
+                </li>
+
+                <li class="article-link" onclick="loadPDF('article-010-Islam4Marriages.pdf')">
+                    اسلام میں چار شادیوں کی اجازت پر اعتراض کا جواب
+                </li>
+
             </ul>
         </div>
 
@@ -67,6 +98,8 @@
                 </p>
             </div>
 
+            <button class="share-btn" onclick="shareArticle()">🔗 شیئر کریں</button>
+
             <iframe id="pdfViewer" src="" frameborder="0" style="width:100%; height:600px;"></iframe>
 
         </div>
@@ -75,13 +108,11 @@
 
 </div><!-- END page-wrapper -->
 
-<!-- FOOTER -->
+<!-- Auto-loaded footer -->
 <div id="footer"></div>
-<script>
-    fetch("footer.html")
-        .then(r => r.text())
-        .then(f => document.getElementById("footer").innerHTML = f);
-</script>
+
+<!-- Auto-include system -->
+<script src="assets/js/include.js"></script>
 
 </body>
 </html>

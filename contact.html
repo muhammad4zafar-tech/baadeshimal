@@ -4,32 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact – رابطہ</title>
+
+    <!-- Styles -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
 </head>
 
 <body>
 
+    <!-- Auto-loaded header -->
     <div id="header"></div>
-    <script>
-        fetch("header.html")
-            .then(r => r.text())
-            .then(h => document.getElementById("header").innerHTML = h);
-    </script>
 
-    <div class="content">
-        <h2>رابطہ</h2>
-        <p>آپ ہم سے درج ذیل ذرائع سے رابطہ کر سکتے ہیں:</p>
-        <ul>
-            <li>Email: baadeshimal.ca@gmail.com</li>
-        </ul>
+    <div class="content" style="max-width:900px; margin:auto; padding:30px; line-height:2; font-size:20px;">
+
+        <h2 style="text-align:center; color:#b00000; margin-bottom:20px;">
+            رابطہ — Contact
+        </h2>
+
+        <p style="text-align:center; margin-bottom:30px;">
+            اگر آپ ،  
+            کوئی سوال پوچھنا چاہتے ہیں،  
+            یا اپنی رائے دینا چاہتے ہیں،  
+            تو آپ مجھ سے براہِ راست رابطہ کر سکتے ہیں۔
+        </p>
+
+        <!-- OPTIONAL: Your Picture -->
+        <div style="text-align:center; margin-bottom:30px;">
+            <img src="assets/images/sultan.jpg" alt="محمد سلطان ظفر" style="width:180px; border-radius:10px;">
+        </div>
+
+        <h3 style="color:#444;">📩 ای میل</h3>
+        <p style="margin-bottom:20px;">
+            آپ مجھے ای میل کر سکتے ہیں:  
+            <strong style="color:#b00000;">baadeshimal.ca@gmail.com</strong>
+        </p>
+
+        <h3 style="color:#444;">📱 سوشل میڈیا</h3>
+        <p>
+            میرے تمام سوشل میڈیا روابط اوپر موجود ہیڈر میں شامل ہیں۔  
+            آپ وہاں سے کسی بھی پلیٹ فارم پر مجھ سے جڑ سکتے ہیں۔
+        </p>
+
+        <hr style="margin:40px 0;">
+
+        <h3 style="color:#444;">📬 رابطے کا مقصد</h3>
+        <p>
+            بادِ شمال ایک فکری، تحقیقی اور ادبی پلیٹ فارم ہے۔  
+            اگر آپ کے پاس کوئی سوال، مشورہ، رائے، یا کوئی موضوع ہے  
+            جس پر آپ چاہتے ہیں کہ میں لکھوں،  
+            تو آپ بلا جھجھک رابطہ کر سکتے ہیں۔
+        </p>
+
+        <p>
+            میری کوشش ہے کہ یہ پلیٹ فارم  
+            مثبت مکالمے، تحقیق، اور خیالات کے تبادلے کا ذریعہ بنے۔  
+            آپ کی رائے اور تجاویز اس سفر کو مزید بہتر بنا سکتی ہیں۔
+        </p>
+
     </div>
 
+    <!-- Auto-loaded footer -->
     <div id="footer"></div>
-    <script>
-        fetch("footer.html")
-            .then(r => r.text())
-            .then(f => document.getElementById("footer").innerHTML = f);
-    </script>
+
+    <!-- Auto-include system -->
+    <script src="assets/js/include.js"></script>
 
 </body>
 </html>
