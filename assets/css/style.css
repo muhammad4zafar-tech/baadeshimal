@@ -295,3 +295,84 @@ body {
         display: block;
     }
 }
+/* Social Icons */
+.social-icons a {
+    color: #555555;      /* medium gray */
+    font-size: 26px;
+    margin-right: 12px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #000000;      /* black on hover */
+}
+/* Official brand hover colors */
+/* Smooth lift + glow + brand color */
+.social-icons a:hover i {
+    transform: translateY(-3px);      /* gentle lift */
+    filter: drop-shadow(0 0 4px rgba(0,0,0,0.3)); /* soft glow */
+}
+
+/* X (Twitter) */
+.social-icons a:hover .fa-x-twitter {
+    color: #000000; /* black */
+    filter: drop-shadow(0 0 4px rgba(0,0,0,0.4));
+}
+
+/* YouTube */
+.social-icons a:hover .fa-youtube {
+    color: #FF0000; /* red */
+    filter: drop-shadow(0 0 4px rgba(255,0,0,0.5));
+}
+
+/* TikTok */
+.social-icons a:hover .fa-tiktok {
+    color: #69C9D0; /* teal */
+    filter: drop-shadow(0 0 4px rgba(105,201,208,0.5));
+}
+
+/* Instagram */
+.social-icons a:hover .fa-instagram {
+    color: #E1306C; /* pink */
+    filter: drop-shadow(0 0 4px rgba(225,48,108,0.5));
+}
+
+/* Smooth animation */
+.social-icons i {
+    transition: all 0.3s ease;
+}
+.share-btn {
+    background-color: #c9a64b; /* gold tone */
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.share-btn:hover {
+    background-color: #a7863d; /* darker gold */
+}
+
+/* ----------------------------------------------------
+   SCROLLBAR FIX — Keep scrollbar on the RIGHT
+---------------------------------------------------- */
+
+/* Force page scrolling to be LTR (scrollbar on right) */
+body {
+    direction: rtl;        /* Keep Urdu RTL */
+    unicode-bidi: embed;
+}
+
+html {
+    direction: rtl;        /* Keep Urdu RTL */
+}
+
+/* Override scrollbar position */
+body {
+    writing-mode: horizontal-tb;   /* Forces scrollbar to right */
+}
