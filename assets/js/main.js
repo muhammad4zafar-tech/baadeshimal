@@ -1,93 +1,101 @@
-/* ----------------------------------------------------
-   HYBRID PDF LOADING
-   - Mobile: open PDF in new full-screen tab
-   - Desktop: load PDF inside viewer
----------------------------------------------------- */
 function loadPDF(pdfFile) {
+    // Remember which article is currently open
+    window.currentArticle = pdfFile;
 
-    // Detect mobile screen width
+    // Mobile phones
     if (window.innerWidth <= 768) {
-        // Mobile → open full screen
-        window.open(`articles/${pdfFile}`, "_blank");
-
-        // Highlight active article
         highlightActive(pdfFile);
+        window.open(`articles/${pdfFile}`, "_blank");
         return;
     }
 
-    // Desktop → load inside viewer
+    // Desktop
     const viewer = document.getElementById("pdfViewer");
     const intro = document.querySelector(".article-intro");
 
-    // Hide intro text
     if (intro) {
         intro.style.display = "none";
     }
 
-    // Load PDF inside iframe viewer
     viewer.src = `articles/${pdfFile}#toolbar=0&zoom=page-width`;
 
-    // Highlight active article
     highlightActive(pdfFile);
-
-    // Scroll to viewer
 }
 
-/* ----------------------------------------------------
-   HIGHLIGHT ACTIVE ARTICLE
----------------------------------------------------- */
+
 function highlightActive(pdfFile) {
     const items = document.querySelectorAll(".article-link");
 
     items.forEach(item => {
         item.classList.remove("active-article");
 
-        if (item.getAttribute("onclick").includes(pdfFile)) {
+        const onclickValue = item.getAttribute("onclick");
+
+        if (onclickValue && onclickValue.includes(pdfFile)) {
             item.classList.add("active-article");
         }
     });
 }
 
-/* ----------------------------------------------------
-   SEARCH / FILTER ARTICLES
----------------------------------------------------- */
+
 function filterArticles() {
     const input = document.getElementById("search").value.toLowerCase();
     const items = document.querySelectorAll(".article-link");
 
     items.forEach(item => {
         const text = item.textContent.toLowerCase();
-        item.style.display = text.includes(input) ? "block" : "none";
+
+        if (text.includes(input)) {
+            item.style.display = "block";
+        } else {
+            item.style.display = "none";
+        }
     });
 }
 
-/* ----------------------------------------------------
-   SHARE ARTICLE
----------------------------------------------------- */
+
 function shareArticle() {
-    // Find the active article
-    const active = document.querySelector(".active-article");
-    if (!active) {
+
+    // Make sure an article has been selected
+    if (!window.currentArticle) {
         alert("Please open an article first.");
         return;
     }
 
-    // Extract PDF filename from onclick attribute
-    const pdfFile = active.getAttribute("onclick").match(/'(.*?)'/)[1];
+    const pdfFile = window.currentArticle;
 
-    // Build full link
-    const link = `https://www.baadeshimal.ca/articles/${pdfFile}`;
+    const link =
+        `https://www.baadeshimal.ca/articles/${pdfFile}`;
 
-    // Mobile share API
+    // Phones and browsers that support the Share menu
     if (navigator.share) {
+
         navigator.share({
             title: "Baad-e-Shimal Article",
-            text: "Check out this article:",
+            text: "Check out this article from Baad-e-Shimal Canada:",
             url: link
+        }).catch(error => {
+            // User cancelled the share window
+            console.log("Share cancelled.");
         });
-    } else {
-        // Desktop fallback
-        navigator.clipboard.writeText(link);
-        alert("Article link copied!");
+
+        return;
     }
+
+    // If Share is not available, copy the link
+    if (navigator.clipboard) {
+
+        navigator.clipboard.writeText(link)
+            .then(() => {
+                alert("Article link copied to clipboard!");
+            })
+            .catch(() => {
+                prompt("Copy this article link:", link);
+            });
+
+        return;
+    }
+
+    // Final fallback
+    prompt("Copy this article link:", link);
 }
