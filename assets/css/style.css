@@ -1,35 +1,72 @@
+/* ====================================================
+   BAAD-E-SHIMAL CANADA
+   MAIN STYLE SHEET
+==================================================== */
+
+
 /* ----------------------------------------------------
    GLOBAL RESET
 ---------------------------------------------------- */
-html, body {
-    height: 100%;
+
+html,
+body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Prevent ANY horizontal overflow */
+    min-height: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
 }
 
+
 /* ----------------------------------------------------
-   GLOBAL SETTINGS
+   GLOBAL BOX SIZING
 ---------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+/* ----------------------------------------------------
+   GLOBAL PAGE SETTINGS
+   LTR controls the overall page layout and scrollbar.
+   Urdu content is set to RTL separately.
+---------------------------------------------------- */
+
 html {
+    direction: ltr;
     font-family: 'Noto Nastaliq Urdu', serif;
-    direction: rtl;
 }
 
 body {
+    direction: ltr;
     background: #f3f0e8;
     color: #222;
 }
 
+
 /* ----------------------------------------------------
-   HEADER
+   PAGE WRAPPER
 ---------------------------------------------------- */
+
+.page-wrapper {
+    width: 100%;
+    max-width: 100%;
+}
+
+
+/* ====================================================
+   HEADER
+==================================================== */
+
 .main-header {
     direction: ltr;
     background: #ffffff;
     padding: 20px 0 10px;
     border-bottom: 4px solid #c9a44a;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .header-container {
@@ -39,7 +76,11 @@ body {
     padding: 0 25px;
 }
 
-/* Social Buttons */
+
+/* ----------------------------------------------------
+   SOCIAL BUTTONS
+---------------------------------------------------- */
+
 .header-left {
     display: flex;
     gap: 10px;
@@ -50,24 +91,39 @@ body {
     width: 90px;
     text-align: center;
     padding: 8px 0;
-    color: #fff;
+    color: #ffffff;
     font-size: 14px;
     border-radius: 4px;
     text-decoration: none;
     font-weight: bold;
-    transition: 0.2s;
+    transition: opacity 0.2s ease;
 }
 
-.social-btn.x  { background: #000; }
-.social-btn.yt { background: #FF0000; }
-.social-btn.tt { background: #000; }
-.social-btn.ig { background: #C13584; }
+.social-btn.x {
+    background: #000000;
+}
+
+.social-btn.yt {
+    background: #ff0000;
+}
+
+.social-btn.tt {
+    background: #000000;
+}
+
+.social-btn.ig {
+    background: #c13584;
+}
 
 .social-btn:hover {
     opacity: 0.8;
 }
 
-/* Logo + Title */
+
+/* ----------------------------------------------------
+   LOGO + SITE TITLE
+---------------------------------------------------- */
+
 .header-right {
     display: flex;
     align-items: center;
@@ -80,28 +136,37 @@ body {
     height: auto;
 }
 
+.site-title {
+    direction: rtl;
+    text-align: right;
+}
+
 .site-title h1 {
     margin: 0;
     font-size: 40px;
     font-weight: bold;
-    color: #222;
+    color: #222222;
 }
 
 .site-title h3 {
     margin: 0;
     font-size: 22px;
-    color: #555;
+    color: #555555;
 }
 
-/* ----------------------------------------------------
+
+/* ====================================================
    NAVIGATION
----------------------------------------------------- */
+==================================================== */
+
 .main-nav {
+    direction: rtl;
     text-align: center;
     margin-top: 20px;
 }
 
 .main-nav a {
+    display: inline-block;
     margin: 0 25px;
     font-size: 22px;
     text-decoration: none;
@@ -114,265 +179,654 @@ body {
     border-bottom: 2px solid #b00000;
 }
 
-/* ----------------------------------------------------
-   CONTENT AREA
----------------------------------------------------- */
+
+/* ====================================================
+   GENERAL CONTENT
+==================================================== */
+
 .content {
+    direction: rtl;
     width: 90%;
     max-width: 1100px;
     margin: 40px auto;
 }
 
-/* ----------------------------------------------------
-   ARTICLES PAGE (Mazameen)
----------------------------------------------------- */
+
+/* ====================================================
+   ARTICLES PAGE
+==================================================== */
+
+/*
+   IMPORTANT:
+
+   The main container is LTR.
+
+   This allows:
+   - Sidebar to appear on the RIGHT
+   - Viewer to appear on the LEFT
+   - Page scrollbar to remain on the RIGHT
+
+   Individual content areas are RTL.
+*/
+
 .container {
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
+    direction: ltr;
+
     width: 100%;
     max-width: 1300px;
+
     margin: 30px auto;
+
     gap: 20px;
+
+    padding: 0 10px;
+
     box-sizing: border-box;
 }
+
+
+/* ----------------------------------------------------
+   PDF VIEWER
+   Appears on the LEFT
+---------------------------------------------------- */
 
 .viewer {
     flex: 2;
-    background: #fff;
-    border: 1px solid #ddd;
+
+    direction: rtl;
+
+    background: #ffffff;
+
+    border: 1px solid #dddddd;
+
     padding: 10px;
-    box-shadow: 0 0 12px rgba(0,0,0,0.15);
+
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+
     border-radius: 4px;
+
     box-sizing: border-box;
+
+    min-width: 0;
 }
+
+
+/* ----------------------------------------------------
+   ARTICLE SIDEBAR
+   Appears on the RIGHT
+---------------------------------------------------- */
 
 .sidebar {
     flex: 1;
-    background: #fff;
-    border: 1px solid #ddd;
+
+    direction: rtl;
+
+    background: #ffffff;
+
+    border: 1px solid #dddddd;
+
     padding: 20px;
+
     box-sizing: border-box;
+
+    min-width: 0;
 }
+
+
+/* ----------------------------------------------------
+   SIDEBAR HEADING
+---------------------------------------------------- */
 
 .sidebar h3 {
     margin-top: 0;
     color: #b00000;
 }
 
+
+/* ----------------------------------------------------
+   ARTICLE LIST
+---------------------------------------------------- */
+
 .sidebar ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 .sidebar li {
     padding: 10px 0;
+
     cursor: pointer;
+
     font-size: 20px;
-    border-bottom: 1px solid #eee;
+
+    border-bottom: 1px solid #eeeeee;
+
+    line-height: 1.8;
 }
 
 .sidebar li:hover {
     color: #b00000;
 }
 
+
+/* ----------------------------------------------------
+   ACTIVE ARTICLE
+---------------------------------------------------- */
+
 .active-article {
     background: #f8e8e8;
+
     border-right: 4px solid #b00000;
+
     padding-right: 10px;
+
     color: #b00000;
+
     font-weight: bold;
 }
 
-/* Intro text */
+
+/* ====================================================
+   ARTICLE INTRODUCTION
+==================================================== */
+
 .article-intro {
+    direction: rtl;
+
     margin-bottom: 20px;
+
     line-height: 1.8;
+
+    text-align: right;
 }
 
 .article-intro h2 {
     color: #b00000;
+
     margin-bottom: 10px;
+
     font-size: 28px;
 }
 
 .article-intro h3 {
-    color: #444;
+    color: #444444;
+
     margin-top: 20px;
+
     font-size: 20px;
 }
 
 .article-intro p {
     font-size: 18px;
-    color: #333;
+
+    color: #333333;
 }
 
+
 /* ----------------------------------------------------
-   FOOTER
+   HORIZONTAL LINE
 ---------------------------------------------------- */
+
+.article-intro hr {
+    border: 0;
+
+    border-top: 1px solid #dddddd;
+
+    margin: 25px 0;
+}
+
+
+/* ====================================================
+   SEARCH BOX
+==================================================== */
+
+#search {
+    width: 100%;
+
+    direction: rtl;
+
+    text-align: right;
+
+    font-family: 'Noto Nastaliq Urdu', serif;
+
+    font-size: 17px;
+
+    padding: 10px 12px;
+
+    margin-bottom: 15px;
+
+    border: 1px solid #cccccc;
+
+    border-radius: 5px;
+
+    background: #ffffff;
+
+    outline: none;
+
+    box-sizing: border-box;
+}
+
+#search:focus {
+    border-color: #b00000;
+
+    box-shadow: 0 0 4px rgba(176, 0, 0, 0.2);
+}
+
+
+/* ====================================================
+   PDF VIEWER
+==================================================== */
+
+#pdfViewer {
+    display: block;
+
+    width: 100%;
+
+    max-width: 100%;
+
+    height: 600px;
+
+    border: 0;
+
+    box-sizing: border-box;
+}
+
+
+/* ====================================================
+   SHARE BUTTON
+==================================================== */
+
+.share-btn {
+    background-color: #c9a64b;
+
+    color: #ffffff;
+
+    border: none;
+
+    padding: 10px 18px;
+
+    font-family: 'Noto Nastaliq Urdu', serif;
+
+    font-size: 16px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    margin-bottom: 15px;
+
+    transition:
+        background-color 0.3s ease,
+        transform 0.2s ease;
+}
+
+.share-btn:hover {
+    background-color: #a7863d;
+
+    transform: translateY(-1px);
+}
+
+
+/* ====================================================
+   SOCIAL ICONS
+==================================================== */
+
+.social-icons {
+    direction: ltr;
+}
+
+.social-icons a {
+    color: #555555;
+
+    font-size: 26px;
+
+    margin-right: 12px;
+
+    text-decoration: none;
+
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #000000;
+}
+
+
+/* ----------------------------------------------------
+   SOCIAL ICON HOVER EFFECT
+---------------------------------------------------- */
+
+.social-icons a:hover i {
+    transform: translateY(-3px);
+
+    filter: drop-shadow(
+        0 0 4px rgba(0, 0, 0, 0.3)
+    );
+}
+
+
+/* ----------------------------------------------------
+   X / TWITTER
+---------------------------------------------------- */
+
+.social-icons a:hover .fa-x-twitter {
+    color: #000000;
+
+    filter: drop-shadow(
+        0 0 4px rgba(0, 0, 0, 0.4)
+    );
+}
+
+
+/* ----------------------------------------------------
+   YOUTUBE
+---------------------------------------------------- */
+
+.social-icons a:hover .fa-youtube {
+    color: #ff0000;
+
+    filter: drop-shadow(
+        0 0 4px rgba(255, 0, 0, 0.5)
+    );
+}
+
+
+/* ----------------------------------------------------
+   TIKTOK
+---------------------------------------------------- */
+
+.social-icons a:hover .fa-tiktok {
+    color: #69c9d0;
+
+    filter: drop-shadow(
+        0 0 4px rgba(105, 201, 208, 0.5)
+    );
+}
+
+
+/* ----------------------------------------------------
+   INSTAGRAM
+---------------------------------------------------- */
+
+.social-icons a:hover .fa-instagram {
+    color: #e1306c;
+
+    filter: drop-shadow(
+        0 0 4px rgba(225, 48, 108, 0.5)
+    );
+}
+
+
+/* ----------------------------------------------------
+   SOCIAL ICON ANIMATION
+---------------------------------------------------- */
+
+.social-icons i {
+    transition: all 0.3s ease;
+}
+
+
+/* ====================================================
+   FOOTER
+==================================================== */
+
 #footer {
     width: 100%;
 }
 
 .main-footer {
     direction: ltr;
+
     width: 100%;
+
     text-align: center;
+
     padding: 25px 0;
+
     background: #ffffff;
+
     border-top: 2px solid #b00000;
+
     margin-top: 40px;
+
     font-size: 18px;
 }
 
-/* ----------------------------------------------------
-   MOBILE RESPONSIVE (FINAL FIXED VERSION)
----------------------------------------------------- */
+
+/* ====================================================
+   MOBILE RESPONSIVE
+==================================================== */
+
 @media (max-width: 768px) {
 
-    /* Header */
+    /* ------------------------------------------------
+       HEADER
+    ------------------------------------------------ */
+
     .header-container {
         flex-direction: column;
+
         align-items: center;
+
         gap: 15px;
+
         padding: 0 10px;
     }
 
+
+    /* ------------------------------------------------
+       SOCIAL BUTTONS
+    ------------------------------------------------ */
+
     .header-left {
         flex-wrap: wrap;
+
         justify-content: center;
+
         gap: 8px;
     }
 
     .social-btn {
         width: 70px;
+
         padding: 6px 0;
+
         font-size: 12px;
     }
 
+
+    /* ------------------------------------------------
+       LOGO
+    ------------------------------------------------ */
+
     .logo {
         max-width: 150px;
+
         width: 100%;
+    }
+
+
+    /* ------------------------------------------------
+       SITE TITLE
+    ------------------------------------------------ */
+
+    .site-title {
+        text-align: center;
+
+        direction: rtl;
     }
 
     .site-title h1 {
         font-size: 28px;
+
         text-align: center;
     }
 
     .site-title h3 {
         font-size: 16px;
+
         text-align: center;
     }
 
-    /* Navigation */
+
+    /* ------------------------------------------------
+       NAVIGATION
+    ------------------------------------------------ */
+
+    .main-nav {
+        margin-top: 15px;
+    }
+
     .main-nav a {
         font-size: 18px;
+
         margin: 0 10px;
     }
 
-    /* Mazameen page — FULL FIX */
+
+    /* ------------------------------------------------
+       ARTICLES CONTAINER
+    ------------------------------------------------ */
+
     .container {
-        display: block !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        overflow-x: hidden !important;
+        display: block;
+
+        direction: ltr;
+
+        width: 100%;
+
+        max-width: 100%;
+
+        margin: 0;
+
+        padding: 0;
+
+        overflow-x: hidden;
     }
+
+
+    /* ------------------------------------------------
+       VIEWER + SIDEBAR
+    ------------------------------------------------ */
 
     .viewer,
     .sidebar {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin: 0 !important;
-        padding: 10px !important;
+        width: 100%;
+
+        max-width: 100%;
+
+        margin: 0;
+
+        padding: 10px;
+
         box-sizing: border-box;
     }
 
+
+    /* ------------------------------------------------
+       SIDEBAR
+    ------------------------------------------------ */
+
+    .sidebar {
+        direction: rtl;
+    }
+
+
+    /* ------------------------------------------------
+       VIEWER
+    ------------------------------------------------ */
+
+    .viewer {
+        direction: rtl;
+    }
+
+
+    /* ------------------------------------------------
+       PDF VIEWER
+    ------------------------------------------------ */
+
     #pdfViewer {
-        width: 100% !important;
-        max-width: 100% !important;
+        width: 100%;
+
+        max-width: 100%;
+
+        height: 600px;
+
         display: block;
     }
-}
-/* Social Icons */
-.social-icons a {
-    color: #555555;      /* medium gray */
-    font-size: 26px;
-    margin-right: 12px;
-    text-decoration: none;
-    transition: color 0.3s ease;
+
+
+    /* ------------------------------------------------
+       ARTICLE TEXT
+    ------------------------------------------------ */
+
+    .article-intro h2 {
+        font-size: 23px;
+    }
+
+    .article-intro h3 {
+        font-size: 18px;
+    }
+
+    .article-intro p {
+        font-size: 16px;
+    }
+
+
+    /* ------------------------------------------------
+       ARTICLE LIST
+    ------------------------------------------------ */
+
+    .sidebar li {
+        font-size: 18px;
+
+        padding: 9px 0;
+    }
 }
 
-.social-icons a:hover {
-    color: #000000;      /* black on hover */
-}
-/* Official brand hover colors */
-/* Smooth lift + glow + brand color */
-.social-icons a:hover i {
-    transform: translateY(-3px);      /* gentle lift */
-    filter: drop-shadow(0 0 4px rgba(0,0,0,0.3)); /* soft glow */
-}
 
-/* X (Twitter) */
-.social-icons a:hover .fa-x-twitter {
-    color: #000000; /* black */
-    filter: drop-shadow(0 0 4px rgba(0,0,0,0.4));
-}
+/* ====================================================
+   VERY SMALL MOBILE SCREENS
+==================================================== */
 
-/* YouTube */
-.social-icons a:hover .fa-youtube {
-    color: #FF0000; /* red */
-    filter: drop-shadow(0 0 4px rgba(255,0,0,0.5));
-}
+@media (max-width: 480px) {
 
-/* TikTok */
-.social-icons a:hover .fa-tiktok {
-    color: #69C9D0; /* teal */
-    filter: drop-shadow(0 0 4px rgba(105,201,208,0.5));
-}
+    .main-header {
+        padding-top: 15px;
+    }
 
-/* Instagram */
-.social-icons a:hover .fa-instagram {
-    color: #E1306C; /* pink */
-    filter: drop-shadow(0 0 4px rgba(225,48,108,0.5));
-}
+    .header-container {
+        padding: 0 8px;
+    }
 
-/* Smooth animation */
-.social-icons i {
-    transition: all 0.3s ease;
-}
-.share-btn {
-    background-color: #c9a64b; /* gold tone */
-    color: #fff;
-    border: none;
-    padding: 10px 18px;
-    font-size: 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-bottom: 15px;
-    transition: background-color 0.3s ease;
-}
+    .social-btn {
+        width: 65px;
 
-.share-btn:hover {
-    background-color: #a7863d; /* darker gold */
-}
+        font-size: 11px;
+    }
 
-/* ----------------------------------------------------
-   SCROLLBAR FIX — Keep scrollbar on the RIGHT
----------------------------------------------------- */
+    .site-title h1 {
+        font-size: 24px;
+    }
 
-/* Force page scrolling to be LTR (scrollbar on right) */
-body {
-    direction: rtl;        /* Keep Urdu RTL */
-    unicode-bidi: embed;
-}
+    .site-title h3 {
+        font-size: 14px;
+    }
 
-html {
-    direction: rtl;        /* Keep Urdu RTL */
-}
+    .main-nav a {
+        font-size: 16px;
 
-/* Override scrollbar position */
-body {
-    writing-mode: horizontal-tb;   /* Forces scrollbar to right */
+        margin: 0 7px;
+    }
+
+    .sidebar li {
+        font-size: 17px;
+    }
+
+    #pdfViewer {
+        height: 550px;
+    }
 }
