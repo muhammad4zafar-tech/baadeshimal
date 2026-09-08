@@ -830,3 +830,134 @@ body {
         height: 550px;
     }
 }
+/* =========================================================
+   MOBILE ARTICLES PAGE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    /* Main page container */
+    .container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 15px 0;
+        padding: 0 10px;
+        gap: 15px;
+        box-sizing: border-box;
+    }
+
+
+    /* Article list */
+    .sidebar {
+        width: 100%;
+        flex: none;
+        order: 1;
+        box-sizing: border-box;
+        padding: 15px;
+        margin: 0;
+    }
+
+
+    /* Article list heading */
+    .sidebar h3 {
+        font-size: 24px;
+        text-align: right;
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+
+
+    /* Search box */
+    #search {
+        width: 100%;
+        height: 45px;
+        box-sizing: border-box;
+        font-size: 16px;
+        padding: 8px 12px;
+        margin-bottom: 15px;
+    }
+
+
+    /* Article list */
+    .sidebar ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+
+    /* Individual article */
+    .article-link {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 14px 12px;
+        margin-bottom: 8px;
+        font-size: 17px;
+        line-height: 1.6;
+        text-align: right;
+        cursor: pointer;
+    }
+
+
+    /* Article currently selected */
+    .article-link.active-article {
+        font-weight: bold;
+    }
+
+
+    /* Article viewer */
+    .viewer {
+        width: 100%;
+        flex: none;
+        order: 2;
+        box-sizing: border-box;
+        padding: 15px;
+        margin: 0;
+    }
+
+
+    /* Introduction */
+    .article-intro {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+
+    .article-intro h2 {
+        font-size: 22px;
+        line-height: 1.6;
+    }
+
+
+    .article-intro h3 {
+        font-size: 20px;
+        line-height: 1.6;
+    }
+    
+    .article-intro p {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+
+    /* Share button */
+    .share-btn {
+        width: 100%;
+        min-height: 48px;
+        font-size: 17px;
+        margin: 10px 0 15px 0;
+    }
+
+
+    /* PDF viewer */
+    #pdfViewer {
+        width: 100%;
+        height: 75vh !important;
+        min-height: 500px;
+        border: none;
+        display: block;
+    }
+
+}
