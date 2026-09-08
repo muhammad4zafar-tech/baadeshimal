@@ -31,7 +31,6 @@ function loadPDF(pdfFile) {
     highlightActive(pdfFile);
 
     // Scroll to viewer
-    viewer.scrollIntoView({ behavior: "smooth" });
 }
 
 /* ----------------------------------------------------
