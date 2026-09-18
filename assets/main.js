@@ -19,8 +19,11 @@ function renderCategories() {
     // Make the selected category's article list obvious without hiding the site header.
     const sidebar=document.querySelector('.sidebar');
     if(sidebar){
-      const top=sidebar.getBoundingClientRect().top + window.scrollY - 18;
-      window.scrollTo({top, behavior:'smooth'});
+      requestAnimationFrame(() => {
+        const headerOffset = window.innerWidth <= 768 ? 12 : 18;
+        const top = sidebar.getBoundingClientRect().top + window.scrollY - headerOffset;
+        window.scrollTo({top, behavior:'smooth'});
+      });
     }
   }));
 }
@@ -53,8 +56,18 @@ async function shareArticle() {
   if(!currentArticle){ alert('پہلے کوئی مضمون کھولیں۔'); return; }
   const url=getArticleUrl(currentArticle.file);
   const data={title:currentArticle.title, text:`${currentArticle.title} — Baad-e-Shimal Canada`, url};
-  try { if(navigator.share){ await navigator.share(data); return; } if(navigator.clipboard && window.isSecureContext){ await navigator.clipboard.writeText(url); alert('مضمون کا لنک کاپی ہوگیا ہے۔'); return; } } catch(e){ if(e && e.name==='AbortError') return; }
-  window.prompt('مضمون کا لنک کاپی کریں:',url);
+  try {
+    // On phones/tablets use the native share sheet. On desktop copy the
+    // direct Baad-e-Shimal URL so browser share services cannot replace it.
+    const mobileShare = window.matchMedia('(max-width: 768px)').matches && navigator.share;
+    if(mobileShare){ await navigator.share(data); return; }
+    if(navigator.clipboard && window.isSecureContext){
+      await navigator.clipboard.writeText(url);
+      alert('مضمون کا براہِ راست Baad-e-Shimal لنک کاپی ہوگیا ہے۔');
+      return;
+    }
+  } catch(e){ if(e && e.name==='AbortError') return; }
+  window.prompt('مضمون کا براہِ راست لنک کاپی کریں:',url);
 }
 
 function escapeHtml(value){ return String(value).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }

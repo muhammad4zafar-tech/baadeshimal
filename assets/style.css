@@ -34,3 +34,18 @@
   .category-card{min-height:56px}
   .category-card span{font-size:11.5px}
 }
+
+/* Header date panel */
+.header-left{display:flex;flex-direction:column;align-items:flex-start;gap:8px;flex:0 0 auto}
+.header-dates{font-size:12.5px;line-height:1.65;color:#555;white-space:nowrap}
+.header-dates>div{min-height:18px}
+.date-gregorian{direction:ltr;text-align:left;font-family:Arial,sans-serif;color:#444}
+.date-shamsi,.date-hijri{direction:rtl;text-align:left;color:#555}
+
+@media(max-width:768px){
+  .header-left{align-items:center;width:100%;gap:5px}
+  .header-dates{text-align:center;font-size:11.5px;line-height:1.55;white-space:normal}
+  .date-gregorian,.date-shamsi,.date-hijri{text-align:center}
+  /* Keep the category-to-list movement clear on phones. */
+  .sidebar{scroll-margin-top:12px}
+}
