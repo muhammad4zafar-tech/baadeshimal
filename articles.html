@@ -1,192 +1,45 @@
 <!DOCTYPE html>
 <html lang="ur" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Articles – مضامین</title>
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <!-- Main JS (PDF viewer, share, highlight, search) -->
-    <script src="assets/js/main.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Articles – مضامین | Baad-e-Shimal Canada</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="assets/articles-data.js" defer></script>
+  <script src="assets/main.js" defer></script>
 </head>
-
 <body>
-
 <div class="page-wrapper">
-
-    <!-- Auto-loaded header -->
-    <div id="header"></div>
-
-    <!-- MAIN CONTENT -->
-    <div class="container">
-
-        <!-- RIGHT SIDE: Article List -->
-        <div class="sidebar">
-            <h3>مضامین</h3>
-
-            <input type="text" id="search" placeholder="مضمون تلاش کریں…" onkeyup="filterArticles()">
-
-            <ul>
-
-                <li class="article-link" onclick="loadPDF('article-001-hastibarritalah.pdf')">
-                    ہستی باری تعالیٰ
-                </li>
-
-                <li class="article-link" onclick="loadPDF('article-002-muhammadpbuh-essaroqurbani.pdf')">
-                    رسول اللہ ﷺ کا جذبہ ایثار و قربانی
-                </li>
-
-                <li class="article-link" onclick="loadPDF('article-003-muhammadpbuh-muzzaki.pdf')">
-                    آنحضرت ﷺ بحیثیت مزّکی
-                </li>
-
-                <li class="article-link" onclick="loadPDF('article-004-MuhammadPBUH-qabooletDua.pdf')">
-                    قبولیتِ دُعا رسول اللہ ﷺ
-                </li>
-
-                <li class="article-link" onclick="loadPDF('article-005-MasihASSultanulQalam.pdf')">
-                    حضرت مسیح موعود علیہ السلام بطور سلطان القلم
-                </li>
-
-                <li class="article-link" onclick="loadPDF('article-006-khulfa.pdf')">
-                    خلفائے کرام کی اطاعت و ادب کی قابلِ تقلید مثالیں
-                </li>
-
-                <li class="article-link" onclick="loadPDF('article-007-NizameKhilafat.pdf')">
-                    نِظامِ خلافت کی اہمیت اور ضرورت
-                </li>
-
-                <li class="article-link" onclick="loadPDF('article-008-ItaatNizameJamaat.pdf')">
-                    اطاعتِ نظامِ جماعت اور ہماری ذمہ داریاں
-                </li>
-
-                <li class="article-link" onclick="loadPDF('article-009-IslamAurMaghrib.pdf')">
-                    اسلام اور مغرب: چند غلط فہمیوں کی تصحیح
-                </li>
-
-                <li class="article-link" onclick="loadPDF('article-010-Islam4Marriages.pdf')">
-                    اسلام میں چار شادیوں کی اجازت پر اعتراض کا جواب
-                </li>
-                <li class="article-link" onclick="loadPDF('article-011-Hazrat_Aysha_RA.pdf')">
-                    حضرت عائشہ رضی اللہ تعالیٰ عنہا
-                </li>
-                <li class="article-link" onclick="loadPDF('article-012-Quran_orginizing_in_30parts.pdf')">
-                    قرآن کریم کے پاروں کی تقسیم
-                </li>
-                 <li class="article-link" onclick="loadPDF('article-013-Obedience_of_Khilafat.pdf')">
-                    اطاعتِ خلافت
-                </li>
-                 <li class="article-link" onclick="loadPDF('article-014-Construction_of_Rabwah.pdf')">
-                    تعمیرِ ربوہ : خلافتِ احمدیہ کا عظیم کارنامہ
-                </li>
-                 <li class="article-link" onclick="loadPDF('article-015-WaqfeNau.pdf')">
-                    تحریکِ وقفِ نو
-                </li>
-                 <li class="article-link" onclick="loadPDF('article-016-Alhadid_iron.pdf')">
-                    الْحَدِید: لوہا
-                </li>
-                 <li class="article-link" onclick="loadPDF('article-017-Hakeem_Muhammad_Rashid.pdf')">
-                    حکیم محمد رشید رضی اللہ تعالیٰ عنہ 
-                </li>
-                 <li class="article-link" onclick="loadPDF('article-018-Muhammad_Yousaf_Ruqiyya_Bibi.pdf')">
-                    چوہدری محمد یوسف صاحب و رقیہ بی بی صاحبہ
-                </li>
-                 <li class="article-link" onclick="loadPDF('article-019-Muhammad_Essa_Zafar.pdf')">
-                    ماسٹر محمد عیسیٰ ظفر مرحوم
-                </li>
-
-                 <li class="article-link" onclick="loadPDF('article-020-Haleema_Khalida.pdf')">
-                    میری والدہ: حلیمہ خالدہ مرحومہ
-                </li>
-                
-                <li class="article-link" onclick="loadPDF('article-021-Do_Ahmadies_not_Follow_Pakistani_Constitution.pdf')">
-                    کیا احمدی پاکستانی آئین کو تسلیم نہیں کرتے؟
-                </li>
-                
-                <li class="article-link" onclick="loadPDF('article-022-Orphans-poors.pdf')">
-                    یتامیٰ ،غرباء ، بیوگان اور بے سہارا لوگوں   کی نگہداشت سے متعلق انصار اللہ کی ذمہ داریاں
-                </li>
-                
-                <li class="article-link" onclick="loadPDF('article-023-Rabwahs_Jalsa_Salanas.pdf')">
-                    جلسہ سالانہ ربوہ کی یادیں
-                </li>
-              
-                <li class="article-link" onclick="loadPDF('article-024-Iseeraan-e-Rah-e-Maula.pdf')">
-                    اِسیرانِ رَاہِ مَولا
-                </li>
-                
-                <li class="article-link" onclick="loadPDF('article-025-BookReading.pdf')">
-                    کُتب بینی  کا شوق کیسے پیدا کیا جائے
-                </li>
-
-                 <li class="article-link" onclick="loadPDF('article-026-Graves_are_responding.pdf')">
-                    قبریں جواب دے رہی ہیں
-                                    
-                 <li class="article-link" onclick="loadPDF('article-027-Hijri_Shamsi_Calendar.pdf')">
-                    ہجری شمی تقویم۔ کیلینڈر
-                  
-                 <li class="article-link" onclick="loadPDF('article-028-8thCondition_of_Bait.pdf')">
-                 آٹھویں شرطِ بیعت: یہ کہ دین اور دین کی عزت اور ہمدریٔ اسلام۔۔۔
-                  
-                 <li class="article-link" onclick="loadPDF('article-029-10thCondition_of_Bait.pdf')">
-                 دسویں شرطِ بیعت: یہ کہ اس عاجز سے عقدِ اخوت محض لِللہ۔۔۔ 
-                  
-                 <li class="article-link" onclick="loadPDF('article-030-FruitFly_Brainmap.pdf')">
-                    مکھی کا دماغ: ایک نیا حیرت کدہ
-                  
-                 <li class="article-link" onclick="loadPDF('article-031-Terry_Fox.pdf')">
-                    ٹیری فاکس: ایک عالمی ہیرو
-                  
-                 <li class="article-link" onclick="loadPDF('.pdf')">
-                    ٹیسٹ
-                    
-                </li> 
-
-            </ul>
+  <div id="header"></div>
+  <main class="articles-page">
+    <section class="articles-heading urdu" dir="rtl">
+      <h2>مضامین</h2>
+      <p>موضوع منتخب کریں یا تمام مضامین میں تلاش کریں۔</p>
+      <div class="article-search-wrap"><i class="fa-solid fa-magnifying-glass"></i><input id="search" type="search" placeholder="مضمون تلاش کریں…" aria-label="مضمون تلاش کریں"></div>
+    </section>
+    <section id="categoryGrid" class="category-grid urdu" dir="rtl" aria-label="مضامین کے زمرے"></section>
+    <section class="article-workspace">
+      <aside class="sidebar urdu" dir="rtl">
+        <div class="sidebar-title-row"><h3 id="articleListTitle">تمام مضامین</h3><span id="resultCount" class="result-count"></span></div>
+        <div id="articleList" class="article-list"></div>
+      </aside>
+      <div class="viewer">
+        <div id="articleIntro" class="article-intro">
+          <div class="urdu" dir="rtl"><h2>مضامین — فکری و ادبی جہتوں کا انتخاب</h2><p>اوپر موجود موضوعات میں سے کوئی زمرہ منتخب کریں، یا دائیں جانب فہرست سے کوئی مضمون کھولیں۔ تلاش کے خانے سے تمام مضامین میں فوری تلاش بھی کی جا سکتی ہے۔</p></div>
+          <hr>
+          <div class="english" dir="ltr"><h3>Articles — Thoughtful, Insightful & Carefully Curated</h3><p>Choose a category above, select an article from the list, or use search to find an article across the full collection.</p></div>
         </div>
-
-        <!-- LEFT SIDE: PDF Viewer -->
-        <div class="viewer">
-
-            <div class="article-intro">
-                <h2>مضامین — فکری و ادبی جہتوں کا انتخاب</h2>
-                <p>
-                    بادِ شمال کینیڈا اپنے قارئین کے لیے ایسے مضامین پیش کرتا ہے جو 
-                    فکری بصیرت، علمی تحقیق، اور ادبی جمالیات کا حسین امتزاج ہوں۔
-                </p>
-                <p>
-                    دائیں جانب موجود فہرست میں سے کوئی بھی مضمون منتخب کریں۔ 
-                    منتخب کردہ تحریر بائیں جانب اسی صفحے پر کھل جائے گی۔
-                </p>
-
-                <hr>
-
-                <h3>Articles — Thoughtful, Insightful & Carefully Curated</h3>
-                <p>
-                    Baad‑e‑Shimal Canada brings you a selection of articles that blend 
-                    scholarship, reflection, and literary elegance. Choose any article 
-                    from the list on the right — it will open here for easy reading.
-                </p>
-            </div>
-
-            <button class="share-btn" onclick="shareArticle()">🔗 شیئر کریں</button>
-
-            <iframe id="pdfViewer" src="" frameborder="0" style="width:100%; height:600px;"></iframe>
-
+        <div id="articleToolbar" class="article-toolbar" hidden>
+          <div id="currentArticleTitle" class="current-article-title urdu" dir="rtl"></div>
+          <div class="article-actions"><button class="share-btn" type="button" onclick="shareArticle()"><i class="fa-solid fa-share-nodes"></i> شیئر کریں</button><a id="openPdfLink" class="open-pdf-btn" href="#" target="_blank" rel="noopener"><i class="fa-regular fa-file-pdf"></i> PDF کھولیں</a></div>
         </div>
-
-    </div><!-- END container -->
-
-</div><!-- END page-wrapper -->
-
-<!-- Auto-loaded footer -->
+        <iframe id="pdfViewer" title="Article PDF viewer"></iframe>
+      </div>
+    </section>
+  </main>
+</div>
 <div id="footer"></div>
-
-<!-- Auto-include system -->
-<script src="assets/js/include.js"></script>
-
-</body>
-</html>
+<script src="assets/include.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "caf1b7a04f7e497186fdaad835f8bcef"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

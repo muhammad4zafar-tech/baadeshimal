@@ -1,19 +1,16 @@
 <!DOCTYPE html>
-<html lang="ur" dir="rtl">
+<html lang="ur" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <title>Categories – زمرے</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
 
     <div id="header"></div>
-    <script>
-        fetch("header.html")
-            .then(r => r.text())
-            .then(h => document.getElementById("header").innerHTML = h);
-    </script>
+    
 
     <div class="content">
 
@@ -37,11 +34,9 @@
     </div>
 
     <div id="footer"></div>
-    <script>
-        fetch("footer.html")
-            .then(r => r.text())
-            .then(f => document.getElementById("footer").innerHTML = f);
-    </script>
+    
 
+<script src="assets/include.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "caf1b7a04f7e497186fdaad835f8bcef"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
