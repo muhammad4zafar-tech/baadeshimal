@@ -11,12 +11,14 @@ function updateHeaderDates() {
     "جنوری", "فروری", "مارچ", "اپریل", "مئی", "جون",
     "جولائی", "اگست", "ستمبر", "اکتوبر", "نومبر", "دسمبر"
   ];
-  gregorian.textContent = `${now.getDate()} ${gregorianMonthsUrdu[now.getMonth()]} ${now.getFullYear()}`;
+  gregorian.textContent = `${now.getDate()} ${now.toLocaleString("en-CA", { month: "long" })} ${now.getFullYear()}`;
+  gregorian.dir = "ltr";
 
   // Ahmadiyya Hijri-Shamsi calendar: Gregorian month/day structure.
   const hsMonths = ["صلح", "تبلیغ", "امان", "شہادت", "ہجرت", "احسان", "وفا", "ظہور", "تبوک", "اخاء", "نبوت", "فتح"];
   const hsYear = now.getFullYear() - 621;
-  shamsi.textContent = `${now.getDate()} ${hsMonths[now.getMonth()]} ${hsYear} ہجری شمسی`;
+  shamsi.innerHTML = `<span dir="ltr">${now.getDate()}</span> ${hsMonths[now.getMonth()]} <span dir="ltr">${hsYear}</span> ہجری شمسی`;
+  shamsi.dir = "rtl";
 
   // Lunar Hijri date: Umm al-Qura calendar, with Western/Latin digits.
   // Use numeric parts so browser locale wording (e.g. era text) cannot leak into the display.
@@ -35,7 +37,8 @@ function updateHeaderDates() {
     const year = parts.find(p => p.type === "year")?.value;
 
     if (day && month >= 1 && month <= 12 && year) {
-      hijri.textContent = `${day} ${hijriMonthsUrdu[month - 1]} ${year} ہجری`;
+      hijri.innerHTML = `<span dir="ltr">${day}</span> ${hijriMonthsUrdu[month - 1]} <span dir="ltr">${year}</span> ہجری`;
+      hijri.dir = "rtl";
     } else {
       hijri.textContent = "";
     }
