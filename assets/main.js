@@ -9,7 +9,20 @@ function renderCategories() {
   const categories = [...new Set(ARTICLES.map(a => a.category))];
   const all = [{name:"تمام مضامین", count:ARTICLES.length}, ...categories.map(name => ({name, count:ARTICLES.filter(a=>a.category===name).length}))];
   grid.innerHTML = all.map(item => `<button class="category-card${item.name===activeCategory?' active':''}" type="button" data-category="${escapeHtml(item.name)}"><span>${escapeHtml(item.name)}</span><small>${item.count} ${item.count===1?'مضمون':'مضامین'}</small></button>`).join("");
-  grid.querySelectorAll('.category-card').forEach(btn => btn.addEventListener('click', () => { activeCategory=btn.dataset.category; const s=document.getElementById('search'); if(s) s.value=''; renderCategories(); renderArticleList(); }));
+  grid.querySelectorAll('.category-card').forEach(btn => btn.addEventListener('click', () => {
+    activeCategory=btn.dataset.category;
+    const s=document.getElementById('search');
+    if(s) s.value='';
+    renderCategories();
+    renderArticleList();
+
+    // Make the selected category's article list obvious without hiding the site header.
+    const sidebar=document.querySelector('.sidebar');
+    if(sidebar){
+      const top=sidebar.getBoundingClientRect().top + window.scrollY - 18;
+      window.scrollTo({top, behavior:'smooth'});
+    }
+  }));
 }
 
 function renderArticleList() {
