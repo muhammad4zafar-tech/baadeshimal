@@ -1,7 +1,3 @@
-function toUrduDigits(value) {
-  return String(value).replace(/\d/g, d => "۰۱۲۳۴۵۶۷۸۹"[d]);
-}
-
 function updateHeaderDates() {
   const gregorian = document.getElementById("gregorianDate");
   const shamsi = document.getElementById("hijriShamsiDate");
@@ -10,21 +6,39 @@ function updateHeaderDates() {
 
   const now = new Date();
 
-  gregorian.textContent = new Intl.DateTimeFormat("en-CA", {
-    day: "numeric", month: "long", year: "numeric"
-  }).format(now);
+  // Gregorian date: Urdu month name, Western/Latin digits.
+  const gregorianMonthsUrdu = [
+    "جنوری", "فروری", "مارچ", "اپریل", "مئی", "جون",
+    "جولائی", "اگست", "ستمبر", "اکتوبر", "نومبر", "دسمبر"
+  ];
+  gregorian.textContent = `${now.getDate()} ${gregorianMonthsUrdu[now.getMonth()]} ${now.getFullYear()}`;
 
-  // Ahmadiyya Hijri-Shamsi calendar: Gregorian month/day structure,
-  // Hijri-Shamsi year = Gregorian year - 621.
+  // Ahmadiyya Hijri-Shamsi calendar: Gregorian month/day structure.
   const hsMonths = ["صلح", "تبلیغ", "امان", "شہادت", "ہجرت", "احسان", "وفا", "ظہور", "تبوک", "اخاء", "نبوت", "فتح"];
   const hsYear = now.getFullYear() - 621;
-  shamsi.textContent = `${toUrduDigits(now.getDate())} ${hsMonths[now.getMonth()]} ${toUrduDigits(hsYear)} ہجری شمسی`;
+  shamsi.textContent = `${now.getDate()} ${hsMonths[now.getMonth()]} ${hsYear} ہجری شمسی`;
+
+  // Lunar Hijri date: Umm al-Qura calendar, with Western/Latin digits.
+  // Use numeric parts so browser locale wording (e.g. era text) cannot leak into the display.
+  const hijriMonthsUrdu = [
+    "محرم", "صفر", "ربیع الاول", "ربیع الثانی", "جمادی الاولی", "جمادی الثانیہ",
+    "رجب", "شعبان", "رمضان", "شوال", "ذوالقعدہ", "ذوالحجہ"
+  ];
 
   try {
-    const parts = new Intl.DateTimeFormat("ur-PK-u-ca-islamic", {
-      day: "numeric", month: "long", year: "numeric"
-    }).format(now);
-    hijri.textContent = `${parts} ہجری`;
+    const formatter = new Intl.DateTimeFormat("en-US-u-ca-islamic-umalqura-nu-latn", {
+      day: "numeric", month: "numeric", year: "numeric"
+    });
+    const parts = formatter.formatToParts(now);
+    const day = parts.find(p => p.type === "day")?.value;
+    const month = Number(parts.find(p => p.type === "month")?.value);
+    const year = parts.find(p => p.type === "year")?.value;
+
+    if (day && month >= 1 && month <= 12 && year) {
+      hijri.textContent = `${day} ${hijriMonthsUrdu[month - 1]} ${year} ہجری`;
+    } else {
+      hijri.textContent = "";
+    }
   } catch (e) {
     hijri.textContent = "";
   }
