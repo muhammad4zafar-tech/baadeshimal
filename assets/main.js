@@ -64,18 +64,16 @@ function loadPDF(pdfFile, options={}) {
   renderArticleList();
 
   const isMobile=window.matchMedia('(max-width: 768px)').matches;
-  if(isMobile){
-    if(options.fromSharedLink){
-      // Let the visitor see the Baad-e-Shimal page first, then open the selected PDF.
-      setTimeout(()=>{ window.location.href=pdfUrl; }, 700);
-    } else {
-      window.location.href=pdfUrl;
-    }
-    return;
-  }
-
   const viewer=document.getElementById('pdfViewer');
-  if(viewer) {
+
+  // Keep visitors on the Baad-e-Shimal article page on every device.
+  // The selected PDF is loaded inside the site's viewer; never replace the
+  // website page with the raw PDF URL.
+  if(isMobile && viewer){
+    viewer.src=pdfUrl;
+    viewer.classList.add('has-pdf');
+  }
+  if(viewer && !isMobile) {
     viewer.src=`${pdfUrl}#toolbar=0&zoom=page-width`;
     viewer.classList.add('has-pdf');
   }
