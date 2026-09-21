@@ -64,8 +64,13 @@ function loadPDF(pdfFile, options={}) {
   renderArticleList();
 
   const isMobile=window.matchMedia('(max-width: 768px)').matches;
-  if(isMobile && !options.fromSharedLink){
-    window.location.href=pdfUrl;
+  if(isMobile){
+    if(options.fromSharedLink){
+      // Let the visitor see the Baad-e-Shimal page first, then open the selected PDF.
+      setTimeout(()=>{ window.location.href=pdfUrl; }, 700);
+    } else {
+      window.location.href=pdfUrl;
+    }
     return;
   }
 
@@ -101,7 +106,26 @@ async function shareArticle() {
       return;
     }
   } catch(e){ if(e && e.name==='AbortError') return; }
-  window.prompt('مضمون کا براہِ راست لنک کاپی کریں:',url);
+
+  // Fallback for browsers where navigator.clipboard is unavailable/blocked.
+  const box=document.createElement('textarea');
+  box.value=url;
+  box.setAttribute('readonly','');
+  box.style.position='fixed';
+  box.style.opacity='0';
+  document.body.appendChild(box);
+  box.select();
+  box.setSelectionRange(0, box.value.length);
+  try {
+    const copied=document.execCommand('copy');
+    document.body.removeChild(box);
+    if(copied){
+      alert('مضمون کا Baad-e-Shimal لنک کاپی ہوگیا ہے۔');
+      return;
+    }
+  } catch(e) {}
+  if(box.parentNode) box.parentNode.removeChild(box);
+  window.prompt('لنک کاپی نہیں ہوسکا۔ براہِ کرم اسے کاپی کریں:',url);
 }
 
 function escapeHtml(value){ return String(value).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
