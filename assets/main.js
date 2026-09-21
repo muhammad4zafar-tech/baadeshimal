@@ -1,7 +1,11 @@
 let currentArticle = null;
 let activeCategory = "تمام مضامین";
 
-function getArticleUrl(file) { return new URL(`articles/${file}`, window.location.href).href; }
+function getArticleUrl(file) {
+  const url = new URL("articles.html", window.location.href);
+  url.searchParams.set("article", file);
+  return url.href;
+}
 
 function renderCategories() {
   const grid = document.getElementById("categoryGrid");
@@ -40,16 +44,46 @@ function renderArticleList() {
   list.querySelectorAll('.article-link').forEach(btn=>btn.addEventListener('click',()=>loadPDF(btn.dataset.file)));
 }
 
-function loadPDF(pdfFile) {
+function loadPDF(pdfFile, options={}) {
   const article=ARTICLES.find(a=>a.file===pdfFile); if(!article) return;
   currentArticle=article;
+  activeCategory=article.category;
   const intro=document.getElementById('articleIntro'); if(intro) intro.hidden=true;
   const toolbar=document.getElementById('articleToolbar'); if(toolbar) toolbar.hidden=false;
   const title=document.getElementById('currentArticleTitle'); if(title) title.textContent=article.title;
-  const open=document.getElementById('openPdfLink'); if(open) open.href=`articles/${article.file}`;
-  const viewer=document.getElementById('pdfViewer');
-  if(viewer) { viewer.src=`articles/${article.file}#toolbar=0&zoom=page-width`; viewer.classList.add('has-pdf'); }
+  const pdfUrl=`articles/${article.file}`;
+  const open=document.getElementById('openPdfLink'); if(open) open.href=pdfUrl;
+
+  if(options.updateUrl !== false){
+    const pageUrl=new URL(window.location.href);
+    pageUrl.searchParams.set('article', article.file);
+    history.replaceState({article:article.file}, '', pageUrl);
+  }
+
+  renderCategories();
   renderArticleList();
+
+  const isMobile=window.matchMedia('(max-width: 768px)').matches;
+  if(isMobile && !options.fromSharedLink){
+    window.location.href=pdfUrl;
+    return;
+  }
+
+  const viewer=document.getElementById('pdfViewer');
+  if(viewer) {
+    viewer.src=`${pdfUrl}#toolbar=0&zoom=page-width`;
+    viewer.classList.add('has-pdf');
+  }
+
+  if(options.fromSharedLink){
+    const workspace=document.querySelector('.article-workspace');
+    if(workspace){
+      requestAnimationFrame(()=>{
+        const top=workspace.getBoundingClientRect().top + window.scrollY - 12;
+        window.scrollTo({top, behavior:'smooth'});
+      });
+    }
+  }
 }
 
 async function shareArticle() {
@@ -74,6 +108,21 @@ function escapeHtml(value){ return String(value).replace(/[&<>'"]/g,c=>({'&':'&a
 
 document.addEventListener('DOMContentLoaded',()=>{
   if(typeof ARTICLES==='undefined') return;
-  renderCategories(); renderArticleList();
-  const search=document.getElementById('search'); if(search) search.addEventListener('input',()=>{ if(search.value.trim()) activeCategory='تمام مضامین'; renderCategories(); renderArticleList(); });
+
+  const requestedFile=new URLSearchParams(window.location.search).get('article');
+  const requestedArticle=requestedFile ? ARTICLES.find(a=>a.file===requestedFile) : null;
+  if(requestedArticle){
+    currentArticle=requestedArticle;
+    activeCategory=requestedArticle.category;
+  }
+
+  renderCategories();
+  renderArticleList();
+
+  const search=document.getElementById('search');
+  if(search) search.addEventListener('input',()=>{ if(search.value.trim()) activeCategory='تمام مضامین'; renderCategories(); renderArticleList(); });
+
+  if(requestedArticle){
+    loadPDF(requestedArticle.file, {updateUrl:false, fromSharedLink:true});
+  }
 });
