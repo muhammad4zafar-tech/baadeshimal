@@ -255,7 +255,7 @@ const ARTICLES = [
     "file": "article-052-Canada-A-Great-Country.pdf"
   },
   {
-    "category": "نظم",
+    "category": "نظمیں",
     "title": "انگلیاں",
     "file": "article-053-Nazm-Unglian.pdf"
   },
@@ -280,7 +280,7 @@ const ARTICLES = [
     "file": "article-057-Changing_Clock.pdf"
   },
   {
-    "category": "احمدیت",
+    "category": "خلافتِ احمدیہ و نظامِ جماعت",
     "title": "تاریخِ اسلام اور احمدیت میں تبلیغ کی اہمیت اور آج کے دور میں لجنہ کی ذمہ داریاں",
     "file": "article-058-Lajna_Tablig.pdf"
   }
