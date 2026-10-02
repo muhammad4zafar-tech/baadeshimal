@@ -70,8 +70,14 @@ function loadPDF(pdfFile, options={}) {
   // The selected PDF is loaded inside the site's viewer; never replace the
   // website page with the raw PDF URL.
   if(isMobile && viewer){
-    viewer.src=pdfUrl;
+    // Force the mobile browser to reload the selected PDF instead of leaving
+    // its built-in PDF placeholder in the iframe. Keep the visitor on the
+    // Baad-e-Shimal article page so the share URL remains the site URL.
     viewer.classList.add('has-pdf');
+    viewer.removeAttribute('src');
+    requestAnimationFrame(() => {
+      viewer.src = `${pdfUrl}#view=FitH`;
+    });
   }
   if(viewer && !isMobile) {
     viewer.src=`${pdfUrl}#toolbar=0&zoom=page-width`;
