@@ -140,7 +140,7 @@ const ARTICLES = [
     "file": "article-025-BookReading.pdf"
   },
   {
-    "category": "متفرق/معلوماتی",
+    "category": "کینیڈا",
     "title": "قبریں جواب دے رہی ہیں",
     "file": "article-026-Graves_are_responding.pdf"
   },
@@ -150,7 +150,7 @@ const ARTICLES = [
     "file": "article-030-FruitFly_Brainmap.pdf"
   },
   {
-    "category": "متفرق/معلوماتی",
+    "category": "کینیڈا",
     "title": "ٹیری فاکس: ایک عالمی ہیرو",
     "file": "article-031-Terry_Fox.pdf"
   },
@@ -165,7 +165,7 @@ const ARTICLES = [
     "file": "article-033-zinda_drawing.pdf"
   },
   {
-    "category": "متفرق/معلوماتی",
+    "category": "تاریخ",
     "title": "ومی ریج کی تاریخی جنگ Vimy Ridge",
     "file": "article-037-VimyRidge.pdf"
   },
@@ -228,5 +228,60 @@ const ARTICLES = [
     "category": "پرانی کہانیاں",
     "title": "سسکیاں",
     "file": "article-047-story-siskiaan.pdf"
+  },
+  {
+    "category": "کینیڈا",
+    "title": "سرجان اے میکڈانلڈ:  کینیڈا  کےپہلے وزیرِ اعظم",
+    "file": "article-048-Sir_John_A_MacDonald.pdf"
+  },
+  {
+    "category": "کینیڈا",
+    "title": "سڈبریSudbury:  آفاقی معجزہ",
+    "file": "article-049-Sudbury.pdf"
+  },
+  {
+    "category": "اسلام",
+    "title": "خلافت راشدہ",
+    "file": "article-050-Khulfa-e-Rashdeen.pdf"
+  },
+  {
+    "category": "تاریخ",
+    "title": "ملکہ وکٹوریہ",
+    "file": "article-051-Queen_Victoria.pdf"
+  },
+  {
+    "category": "کینیڈا",
+    "title": "کینیڈا: ایک عظیم ملک",
+    "file": "article-052-Canada-A-Great-Country.pdf"
+  },
+  {
+    "category": "نظم",
+    "title": "انگلیاں",
+    "file": "article-053-Nazm-Unglian.pdf"
+  },
+  {
+    "category": "اسلام",
+    "title": "ادائیگی حج کا  مختصرطریقہ کار",
+    "file": "article-054-How_to_perform_Hajj.pdf"
+  },
+  {
+    "category": "پاکستان",
+    "title": "قیام پاکستان کی وجہ اسلام یا مسلمان؟",
+    "file": "article-055-Pakistan_for_IslamOrMuslims.pdf"
+  },
+  {
+    "category": "پاکستان",
+    "title": "پاکستان کے معاشی مسائل اور ان کا حل",
+    "file": "article-056-Pakistans_financial_issues.pdf"
+  },
+  {
+    "category": "متفرق",
+    "title": "گھڑی کی سوئی اور انسانی زندگی",
+    "file": "article-057-Changing_Clock.pdf"
+  },
+  {
+    "category": "احمدیت",
+    "title": "تاریخِ اسلام اور احمدیت میں تبلیغ کی اہمیت اور آج کے دور میں لجنہ کی ذمہ داریاں",
+    "file": "article-058-Lajna_Tablig.pdf"
   }
 ];
